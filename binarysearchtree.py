@@ -1,4 +1,3 @@
-# Lab 5
 class Node:
     def __init__(self, key, val):
         self._key = key
@@ -18,7 +17,7 @@ class Node:
 
     def right_child(self):
         return self._right
-    
+
 
 class BinarySearchTree:
     def __init__(self):
@@ -72,4 +71,4 @@ def main():
     m = credits.size()          # m = 2
 
 if __name__ == '__main__':
-    main()    
+    main()
