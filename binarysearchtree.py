@@ -138,8 +138,17 @@ class BinarySearchTree:
             return self.__max(v.right_child())
         return v
 
+    def __in_order_walk(self, v):
+        if v:
+            yield from self.__in_order_walk(v.left_child())
+            yield v.data()
+            yield from self.__in_order_walk(v.right_child())
+
     def __str__(self):
         return str(self.root)
+
+    def __iter__(self):
+        return self.__in_order_walk(self.root)
 
 def main():
     credits = BinarySearchTree()
@@ -150,15 +159,17 @@ def main():
     credits.insert('DA2005', 7.5)
     credits.insert('DA2003', 6)
     credits.insert('DA4003', 7.5)
-    print(credits)
+    # print(credits)
     n = credits.size()          # n = 3
     hp = credits.find('DA2005') # set hp to 7.5
-    credits.remove('DA2004')
+    # credits.remove('DA2004')
     m = credits.size()          # m = 2
-    print(credits._BinarySearchTree__find(credits.root, 'DA2005')._Node__parent)
-    print(n, m)
-    print(credits.min())
-    print(credits.max())
+    # print(credits._BinarySearchTree__find(credits.root, 'DA2005')._Node__parent)
+    # print(n, m)
+    # print(credits.min())
+    # print(credits.max())
+    for course, hp in credits:
+        print(course)
 
 if __name__ == '__main__':
     main()
