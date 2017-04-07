@@ -25,6 +25,9 @@ class Node:
     def parent(self):
         return self.__parent
 
+    def set_val(self, value): # ??
+        self.__val = value
+
     def __str__(self):
         return str(self.__key+' '+str(self.__val))
 
@@ -63,7 +66,7 @@ class BinarySearchTree:
             return Node(key, val)
 
     def find(self, key):
-        return self.__find(self.root, key)._Node__val # Return only the value
+        return self.__find(self.root, key) # Return only the value?
 
     def __find(self, v, key):
         if v:
@@ -150,6 +153,13 @@ class BinarySearchTree:
     def __iter__(self):
         return self.__in_order_walk(self.root)
 
+    def __getitem__(self, key):
+        return self.find(key)
+
+    def __setitem__(self, key, value):
+        v = self.find(key)
+        v.set_val(value)
+
 def main():
     credits = BinarySearchTree()
     credits.insert('DA3018', 7.5)
@@ -160,16 +170,22 @@ def main():
     credits.insert('DA2003', 6)
     credits.insert('DA4003', 7.5)
     # print(credits)
-    n = credits.size()          # n = 3
+    n = credits.size()          # n = 6
     hp = credits.find('DA2005') # set hp to 7.5
     # credits.remove('DA2004')
-    m = credits.size()          # m = 2
+    m = credits.size()          # m = 5
     # print(credits._BinarySearchTree__find(credits.root, 'DA2005')._Node__parent)
     # print(n, m)
     # print(credits.min())
     # print(credits.max())
-    for course, hp in credits:
-        print(course)
+    # for course, hp in credits:
+    #     print(course)
+    # for i in credits:
+    #     print(i)
+    print(credits['DA2004'])
+    credits['DA2004'] = 15
+    print(credits['DA2004'])
+    print(hp)
 
 if __name__ == '__main__':
     main()
