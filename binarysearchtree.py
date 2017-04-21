@@ -178,8 +178,8 @@ def main():
     # print(n, m)
     # print(credits.min())
     # print(credits.max())
-    # for course, hp in credits:
-    #     print(course)
+    for course, hp in credits:
+         print(course)
     # for i in credits:
     #     print(i)
     print(credits['DA2004'])
